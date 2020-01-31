@@ -2,19 +2,21 @@
 def selection_sort(arr):
     for i in range(0, len(arr)-1):
         cur_index = i  # [*1*, 5, 8, 4] = 0 index
-        #save smallest value
+        # save smallest value
         smallest_index = cur_index  # 0 index
 
         for j in range(cur_index, len(arr)):
-            #compare the current smallest value to the rest of array
-            #if there is a smaller item then set the smallest_index = that item
+            # compare the current smallest value to the rest of array
+            # if there is a smaller item then set the smallest_index = that item
             if arr[smallest_index] > arr[j]:  # [1, *5*, 8, *4* ]
-              #if there is a smaller item than the current save it
-              smallest_index = j  # index 1 now-> index 3
+                # if there is a smaller item than the current save it
+                smallest_index = j  # index 1 now-> index 3
 
-        #swap bigger values to the right and smaller to left
+        # swap bigger values to the right and smaller to left
         temp = arr[smallest_index]  # [1, 5, 8, *4*]
+        # smaller value = current value (we move the bigger to the right)
         arr[smallest_index] = arr[cur_index]  # [1, *5, 8, *4] => [1, 5, 8, 5]
+        # Set current value to equal the smaller (left = smaller)
         arr[cur_index] = temp  # [1, 5, 8, 5] => [1, 4, 8, 5]
 
     return arr
@@ -22,23 +24,17 @@ def selection_sort(arr):
 
 # TO-DO:  implement the Bubble Sort function below
 def bubble_sort(arr):
-    # loop through n-1 elements
-    for i in range(1, len(arr)):
-        j = i
-        # 1st while j is greater or equal than 0 since we are counting down
-        # 2nd while item on rigth is smaller than left item (continue)
-        while j > 0 and arr[j] < arr[j-1]:
-            # saving current value
-            temp = arr[j]  # [1, 5, 8, *4*]
-
-            #right = left
-            arr[j] = arr[j - 1]  # [1, 5, 8, 4] => [1, 5, 8, 8]
-
-            # left = original value
-            arr[j-1] = temp  # [1, 5, 8, 8] => [1, 5, 4, 8]
-
-            # decrease the value of j to eventually terminate loop
-            j -= 1
+    # range(arr_len)
+    arr_len = len(arr)-1
+    # iterate from rigth to left
+    for i in range(arr_len, 0, -1):  # range(start,stop,step)
+        # print(i)
+        for j in range(i):  # iterate from 0-current index of i ex 0-9
+            # if item on the left is greater than item on the right then *swap*
+            if arr[j] > arr[j+1]:  # [*5L* > *8R*, 4, 2] then swap
+                temp = arr[j]  # [*5*, 8, 4, 2]
+                arr[j] = arr[j+1]  # [5 <- 8, 4, 2] = [8, 8, 4, 2]
+                arr[j+1] = temp  # [8, 8, 4, 2] = [8, 5, 4, 2]
     return arr
 
 
@@ -47,4 +43,3 @@ def bubble_sort(arr):
 
 
 #     return arr
-
