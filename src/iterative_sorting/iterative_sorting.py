@@ -24,14 +24,12 @@ def selection_sort(arr):
 
 # TO-DO:  implement the Bubble Sort function below
 def bubble_sort(arr):
-    # range(arr_len)
-    arr_len = len(arr)-1
-    # iterate from rigth to left
-    for i in range(arr_len, 0, -1):  # range(start,stop,step)
+    for i in range(0, len(arr)):  # range(start,stop,step)
         # print(i)
-        for j in range(i):  # iterate from 0-current index of i ex 0-9
+        for j in range(0, len(arr)-1):  # iterate from 0-current index of i ex 0-9
             # if item on the left is greater than item on the right then *swap*
             if arr[j] > arr[j+1]:  # [*5L* > *8R*, 4, 2] then swap
+
                 temp = arr[j]  # [*5*, 8, 4, 2]
                 arr[j] = arr[j+1]  # [5 <- 8, 4, 2] = [8, 8, 4, 2]
                 arr[j+1] = temp  # [8, 8, 4, 2] = [8, 5, 4, 2]
